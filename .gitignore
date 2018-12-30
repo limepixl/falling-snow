@@ -17,3 +17,5 @@
 *.user
 *.sln
 *.opendb
+*.iobj
+*.ipdb
