@@ -6,6 +6,8 @@
 // Window dimensions
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
+const unsigned int NUM_OF_SNOWFLAKES = 150;
+const unsigned int DELAY = 200;
 
 void createFlake(std::vector<sf::CircleShape>& arr);
 
@@ -16,7 +18,7 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
 
 	std::vector<sf::CircleShape> snowflakes;
-	snowflakes.reserve(150);
+	snowflakes.reserve(NUM_OF_SNOWFLAKES);
 
 	while(window.isOpen()) {
 		elapsed++;
@@ -27,7 +29,7 @@ int main() {
 				window.close();
 		}
 
-		if(elapsed >= 200 && snowflakes.size() < 150) {
+		if(elapsed >= DELAY && snowflakes.size() < NUM_OF_SNOWFLAKES) {
 			createFlake(snowflakes);
 			elapsed = 0;
 		}
