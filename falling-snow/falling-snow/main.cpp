@@ -1,12 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <random>
+#include <iostream>
 
 // Window dimensions
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
-const unsigned int NUM_OF_SNOWFLAKES = 150;		// Change this to increase the number of snowflakes drawn at any given time
-const unsigned int DELAY = 200;					// Change this to increase the frequency of snowflakes spawned
+const unsigned int NUM_OF_SNOWFLAKES = 200;		// Change this to increase the number of snowflakes drawn at any given time
+const unsigned int DELAY = 5;					// Change this to increase the frequency of snowflakes spawned
 
 void createFlake(std::vector<sf::CircleShape>& arr);
 
@@ -15,6 +16,7 @@ int main() {
 	srand((unsigned int)time(0));	// Random seeding
 
 	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
+	window.setFramerateLimit(120);
 
 	std::vector<sf::CircleShape> snowflakes;
 	snowflakes.reserve(NUM_OF_SNOWFLAKES);
@@ -37,7 +39,7 @@ int main() {
 		window.clear();
 
 		for(unsigned int i = 0; i < snowflakes.size(); i++) {
-			snowflakes[i].move(0.0f, snowflakes[i].getRadius() * 0.01f);
+			snowflakes[i].move(0.0f, snowflakes[i].getRadius() * 0.4f);
 			window.draw(snowflakes[i]);
 
 			// Don't draw snowflakes that are outside of the window
@@ -47,6 +49,8 @@ int main() {
 		}
 
 		window.display();
+
+		std::cout << elapsed << std::endl;
 	}
 	return 0;
 }
