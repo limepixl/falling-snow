@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <random>
-#include <iostream>
 
 // Window dimensions
 const unsigned int WIDTH = 800;
@@ -49,8 +48,6 @@ int main() {
 		}
 
 		window.display();
-
-		std::cout << elapsed << std::endl;
 	}
 	return 0;
 }
