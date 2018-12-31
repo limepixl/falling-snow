@@ -1,12 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <random>
+#include <iostream>
 
 // Window dimensions
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
-const unsigned int NUM_OF_SNOWFLAKES = 200;		// Change this to increase the number of snowflakes drawn at any given time
-const unsigned int DELAY = 5;					// Change this to increase the frequency of snowflakes spawned
 
 void createFlake(std::vector<sf::CircleShape>& arr);
 
@@ -14,11 +13,25 @@ int main() {
 	unsigned int elapsed = 0;		// Elapsed time since last snowflake spawn
 	srand((unsigned int)time(0));	// Random seeding
 
+	unsigned int numOfSnowflakes;
+	std::cout << "Max number of snowflakes present on the screen. (0 for default): ";
+	std::cin >> numOfSnowflakes;
+
+	unsigned int delay;
+	std::cout << "Delay between spawns. (0 for default): ";
+	std::cin >> delay;
+
+	// Default values
+	if(numOfSnowflakes == 0)
+		numOfSnowflakes = 200;
+	if(delay == 0)
+		delay = 10;
+
 	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML works!");
 	window.setFramerateLimit(120);
 
 	std::vector<sf::CircleShape> snowflakes;
-	snowflakes.reserve(NUM_OF_SNOWFLAKES);
+	snowflakes.reserve(numOfSnowflakes);
 
 	while(window.isOpen()) {
 		elapsed++;
@@ -30,7 +43,7 @@ int main() {
 		}
 
 		// If the delay has passed and the max num of snowflakes isn't reached, create another
-		if(elapsed >= DELAY && snowflakes.size() < NUM_OF_SNOWFLAKES) {
+		if(elapsed >= delay && snowflakes.size() < numOfSnowflakes) {
 			createFlake(snowflakes);
 			elapsed = 0;
 		}
