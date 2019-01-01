@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.8)
 
 project(snow)
 
+set(SFML_STATIC_LIBRARIES TRUE)
+
 if(WIN32)
     set(SFML_DIR "C:/dev/OpenGL/SFML/lib/cmake/SFML")
 endif(WIN32)
