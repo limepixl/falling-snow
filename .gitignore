@@ -19,11 +19,13 @@
 *.opendb
 *.iobj
 *.ipdb
-*.cmake
 CMakeCache.txt
+CMakeFiles
 Makefile
 *.o
 *.out
 *.make
 *.internal
+.vscode
 
+cmake_install.cmake
