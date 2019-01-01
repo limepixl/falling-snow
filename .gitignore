@@ -19,3 +19,11 @@
 *.opendb
 *.iobj
 *.ipdb
+*.cmake
+CMakeCache.txt
+Makefile
+*.o
+*.out
+*.make
+*.internal
+
